@@ -1,8 +1,19 @@
+import AnimatedCounter from '../components/AnimatedCounter'
 import Button from '../components/Button'
 import HeroExperience from '../components/HeroModels/HeroExperience'
 import { words } from '../constants'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 
 const Hero = () => {
+  useGSAP(() => {
+    gsap.fromTo(
+      '.hero-text h1',
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, stagger: 0.3, ease: 'power2.inOut' }
+    )
+  })
+
   return (
     <section id='hero' className='relative overflow-hidden'>
       <div className='absolute top-0 left-0 z-10'>
@@ -23,9 +34,9 @@ const Hero = () => {
                 Shaping
                 <span className='slide'>
                   <span className='wrapper'>
-                    {words.map((word) => (
+                    {words.map((word, i) => (
                       <span
-                        key={word.text}
+                        key={i}
                         className='flex items-center md:gap-3 gap-1 pb-2'
                       >
                         <img
@@ -60,6 +71,8 @@ const Hero = () => {
           </div>
         </figure>
       </div>
+
+      <AnimatedCounter />
     </section>
   )
 }
