@@ -12,7 +12,7 @@ const Hero = () => {
       { y: 50, opacity: 0 },
       { y: 0, opacity: 1, duration: 1, stagger: 0.3, ease: 'power2.inOut' }
     )
-  })
+  }, [])
 
   return (
     <section id='hero' className='relative overflow-hidden'>
